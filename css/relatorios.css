@@ -1,0 +1,12 @@
+@media print {
+    .btn, button {
+        display: none;
+    }
+    nav{
+        display: none
+    }
+
+    .sidebar, .breadcrumb, .divRecebe{
+        display: none
+    }
+}

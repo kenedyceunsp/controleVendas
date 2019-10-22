@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="Kenedy Ribeiro">
+
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+
+  <title>Controle de Vendas</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/relatorios.css">
+
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+    <a class="navbar-brand mr-1" href="index.html">Controle de Vendas</a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fas fa-bars"></i>
+    </button>
+
+  </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Painel de controle</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Lançamentos</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="clientes.html">Clientes</a>
+          <a class="dropdown-item" href="recebimentos.html">Recebimentos</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="relatorioDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Relatórios</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="relatorioDropdown">
+          <a href="relatorioContasVencidas.html" class="dropdown-item">Contas Vencidas</a>
+          <a href="relatorioValoresRecebidos.html" class="dropdown-item">Contas Recebidas</a>
+          <a href="relatorioFichasFaltantes.html" class="dropdown-item">Fichas Faltantes</a>
+        </div>
+      </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="index.html">Painel de controle</a>
+          </li>
+          <li class="breadcrumb-item active">Clientes</li>
+        </ol>
+
+        <!-- Page Content -->
+        <div id="consultaClientes" class="container">
+          <div class="card mb-3">
+            <div class="card-header">
+              <h4>Consultar Cliente</h4>
+              <div class="form-group row">
+                <div class="col-6 col-md-4">
+                  <input id="documentoCliente" type="number" class="form-control" placeholder="Número de um documento">
+                </div>
+                <div class="col-6 col-md-4">
+                  <select name="opConsulta" id="opConsulta" class="form-control">
+                    <option value="CPF">CPF</option>
+                    <option value="RG">RG</option>
+                    <option value="nome">Nome</option>
+                  </select>
+                </div>
+                <div class="col-12 col-md-4">
+                  <button id="consultaCliente" class="btn btn-primary btn-block">Consultar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="form-group row">
+            <div class="col-12 col-md-9">
+              <label for="nomeCliente">Nome</label>
+              <input type="text" class="form-control " placeholder="Nome Completo" id="nomeCliente" name="formCliente"
+                readonly>
+            </div>
+            <div class="col-12 col-md-3">
+              <label for="statusCliente">Status</label>
+              <select name="statusCliente" id="statusCliente" class="form-control" readonly>
+                <option value="ativo">Ativo</option>
+                <option value="bloqueado">Bloqueado</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-8">
+              <label for="enderecoCliente">Endereço</label>
+              <input type="text" class="form-control " placeholder="Rua e número" id="enderecoCliente"
+                name="formCliente" readonly>
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="bairroCliente">Bairro</label>
+              <input type="text" class="form-control " placeholder="Bairro" id="bairroCliente" name="formCliente"
+                readonly>
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="telefoneCliente">Telefone</label>
+              <input type="text" class="form-control " placeholder="Telefone fixo" id="telefoneCliente"
+                name="formCliente" readonly>
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="celularCliente">Celular</label>
+              <input type="text" class="form-control " placeholder="celular" id="celularCliente" name="formCliente"
+                readonly>
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="cidadeCliente">Cidade</label>
+              <select name="cidade" id="cidadeCliente" class="form-control" readonly>
+                <option value="itapetininga">Itapetininga</option>
+                <option value="tatui">Tatuí</option>
+              </select>
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="rgCliente">RG</label>
+              <input type="text" class="form-control " placeholder="RG" id="rgCliente" maxlength="9" name="formCliente"
+                readonly>
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="cpfCliente">CPF</label>
+              <input type="number" class="form-control " placeholder="cpf" id="cpfCliente" maxlength="11"
+                name="formCliente" readonly>
+            </div>
+            <div class="col-12 col-md-4">
+              <label for="dtNascCliente">Data de Nascimento</label>
+              <input type="date" class="form-control " placeholder="dtNascCliente" id="dtNascCliente" name="formCliente"
+                readonly>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 col-md-4">
+              <label for="obsCliente">Observação</label>
+              <textarea id="obsCliente" class="form-control" name="formCliente" cols="30" rows="3"
+                placeholder="Qualquer informação relevante sobre o cliente" readonly></textarea>
+            </div>
+            <div class="col-12 col-md-6 mt-3 mt-md-5">
+              <button id="salvarCliente" class="btn btn-secondary">Salvar</button>
+              <button id="editaFormCliente" class="btn btn-secondary">Editar</button>
+              <button id="excluirCliente" class="btn btn-secondary" data-toggle="modal"
+                data-target="#modalExcluiCliente">Excluir</button>
+            </div>
+          </div>
+
+        </div><br>
+        <div class="container">
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-table"></i>
+              Histórico de fichas
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered table-striped" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>Data de criação</th>
+                      <th>Quantidade de parcelas</th>
+                      <th>Valor de cada parcela</th>
+                      <th>Total</th>
+                      <th>Ultimo recebimento</th>
+                      <th>Status</th>
+                      <th>N° ficha</th>
+                    </tr>
+                  </thead>
+                  <tbody id="historicoFichas">
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <button id="novaFicha" class="btn btn-dark">Nova ficha <sup>+</sup> </button>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <!--footer class="sticky-footer">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Your Website 2019</span>
+          </div>
+        </div>
+      </footer-->
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--modal ficha-->
+
+  <div class="modal fade" id="modalFicha" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+
+          <div class="row">
+            <div class="col-6">
+              <h6 class="modal-title">Ficha N°</h6>
+            </div>
+            <div class="col-6">
+              <input id="numeroFicha" class="form-control" type="number" readonly>
+            </div>
+            <div class="col-12">
+              <label for="nomeClienteModal">Cliente</label>
+              <input id="nomeClienteModal" class="form-control" readonly>
+            </div>
+          </div>
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row" id="formNovaFicha">
+              <div class="col-3">
+                <label for="nomeVendedor">
+                  <h6>Vendedor</h6>
+                  <input id="nomeVendedor" type="text" class="form-control" placeholder="Ex: João"
+                    style="margin-bottom: 2em">
+                </label>
+              </div>
+              <div class="col-3">
+                <h6>Motorista</h6>
+                <input id="nomeMotorista" type="text" class="form-control" placeholder="Ex: Pedro"
+                  style="margin-bottom: 2em">
+              </div>
+              <div class="col-6">
+                <h6>Data da Compra</h6>
+                <input id="dataCompra" type="date" class="form-control" style="margin-bottom: 2em; margin-top: 0.5em">
+              </div>
+              <div class="col-4">
+                <label for="qtdParcelas">Qtd de parcelas</label>
+                <input type="number" class="form-control" id="qtdParcelas" placeholder="Ex: 4">
+              </div>
+              <div class="col-4">
+                <label for="totalFicha">Total da ficha</label>
+                <input type="number" class="form-control" id="totalFicha" placeholder="EX: 100,00">
+              </div>
+              <button class="btn btn-success" style="height: 50%; margin-top: 2em; margin-bottom: 2em;"
+                id="gerarParcelas">Gerar parcelas</button>
+              <div class="col-12">
+                <label for="listaMercadorias">Mercadorias</label>
+                <textarea name="" id="listaMercadorias" cols="8" rows="4" placeholder="Digite aqui as mercadorias"
+                  class="form-control" style="margin-bottom: 1em"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="excluiFicha" type="button" class="btn btn-danger" data-toggle="tooltip" data-placement="top"
+            title="Cancela o ultimo recebimento realizado">Excluir</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+          <button id="salvaFicha" type="button" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal Consulta Clientes-->
+  <div class="modal fade" id="modalClientes" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document" style="overflow-y: initial !important">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Clique para selecionar o cliente</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" style="height: 250px; overflow-y: auto;">
+
+          <table id="tableModalCliente" class="table table-bordered table-striped" width="100%" cellspacing="0">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Endereço</th>
+                <th>Cidade</th>
+              </tr>
+            </thead>
+            <tbody id="tableConsultaClientes">
+
+            </tbody>
+          </table>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <!--Modal confirmação exclusão cliente-->
+  <div class="modal fade" id="modalExcluiCliente" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Excluir cliente</h4>
+        </div>
+        <div class="modal-body">
+          <p>Tem certeza que deseja excluir o cliente? A operação não poderá ser desfeita e todas as fichas relacionadas
+            ao cliente serão apagadas</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button id="confirmaExclusao" class="btn btn-danger">Eu entendo, continuar mesmo assim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Page level plugin JavaScript-->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="vendor/datatables/jquery.dataTables.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin.min.js"></script>
+
+
+
+  <!--Scripts de manipulação do template-->
+  <script src="js/controllers/uteis.js"></script>
+  <script src="js/controllers/clientes.js"></script>
+  <script src="js/controllers/parcelas.js"></script>
+  <script src="js/controllers/ficha.js"></script>
+</body>
+
+</html>
